@@ -1,42 +1,42 @@
 trump_lgbt <- cces16 %>% 
   mutate(gay = recode(sexuality, "1=0; 2:5=1; else = 0")) %>% 
   mutate(trans2 = recode(trans, "1=1; else =0")) %>% 
-  mutate(age = 2016 - birthyr) %>% 
+  mutate(income = recode(faminc, "14:16=14 ; 31:99 = 99")) %>% 
   mutate(trump = recode(CC16_410a, "1=1; 2:4=0; else = NA")) %>% 
   filter(gay ==1 | trans2 ==1) %>% 
-  group_by(age) %>% 
+  group_by(income) %>% 
   mean_ci(trump, wt = commonweight_vv_lgbt) %>% 
   mutate(candidate = "LGBT - Trump")
-  
+
 clinton_lgbt <- cces16 %>% 
   mutate(gay = recode(sexuality, "1=0; 2:5=1; else = 0")) %>% 
   mutate(trans2 = recode(trans, "1=1; else =0")) %>% 
-  mutate(age = 2016 - birthyr) %>% 
+  mutate(income = recode(faminc, "14:16=14 ; 31:99 = 99")) %>%  
   mutate(clinton = recode(CC16_410a, "1=0; 2=1; 3:4=0; else = NA")) %>% 
   filter(gay ==1 | trans2 ==1) %>% 
-  group_by(age) %>% 
+  group_by(income) %>% 
   mean_ci(clinton, wt = commonweight_vv_lgbt) %>% 
   mutate(candidate = "LGBT - Clinton")
 
 trump_not_lgbt <- cces16 %>% 
-  mutate(age = 2016 - birthyr) %>% 
+  mutate(income = recode(faminc, "14:16=14 ; 31:99 = 99")) %>% 
   mutate(trump = recode(CC16_410a, "1=1; 2:4=0; else = NA")) %>% 
-  group_by(age) %>% 
+  group_by(income) %>% 
   mean_ci(trump, wt = commonweight_vv_post) %>% 
   mutate(candidate = "Entire Sample - Trump")
 
 clinton_not_lgbt <- cces16 %>% 
-  mutate(age = 2016 - birthyr) %>% 
+  mutate(income = recode(faminc, "14:16=14 ; 31:99 = 99")) %>%  
   mutate(clinton = recode(CC16_410a, "1=0; 2=1; 3:4=0; else = NA")) %>% 
-  group_by(age) %>% 
+  group_by(income) %>% 
   mean_ci(clinton, wt = commonweight_vv_post) %>% 
   mutate(candidate = "Entire Sample - Clinton")
 
 graph <- bind_df("lgbt")
 
 graph %>% 
-  filter(age <= 80) %>% 
-  ggplot(., aes(x= age, y = mean, group = candidate, color = candidate)) +
+  filter(income != 99) %>% 
+  ggplot(., aes(x= income, y = mean, group = candidate, color = candidate)) +
   geom_point() +
   geom_smooth() +
   theme_minimal() +
