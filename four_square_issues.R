@@ -31,6 +31,10 @@ g2 %>%
   mean_ci(econ) # 1.36
 
 
+font_add_google("Playfair Display", "font")
+showtext_auto()
+
+
 dem <- g2 %>% 
   mutate(gay = recode(sexuality, "1=0; 2:5=1; else = 0")) %>% 
   mutate(trans2 = recode(trans, "1=1; else =0")) %>% 
@@ -47,10 +51,10 @@ dem <- g2 %>%
   labs(x = "<-- Economic Liberal: Economic Conservative -->", y = "<-- Social Liberal: Social Conservative -->", title = "", caption = "", subtitle = "Democrats" ) +
   geom_vline(xintercept = 57.5, linetype = "dashed") +
   geom_hline(yintercept = 2.38, linetype = "dashed") + 
-  annotate("text", x=20, y = 5, label = "11.8%", size = 16, family = "font") +
-  annotate("text", x=20, y = 1, label = "60.6%", size = 16, family = "font") +
-  annotate("text", x=80, y = 5, label = "8.3%", size = 16, family = "font") +
-  annotate("text", x=80, y = 1, label = "18.6%", size = 16, family = "font") 
+  annotate("text", x=20, y = 5, label = "11.8%", size = 24, family = "font") +
+  annotate("text", x=20, y = 1, label = "60.6%", size = 24, family = "font") +
+  annotate("text", x=80, y = 5, label = "8.3%", size = 24, family = "font") +
+  annotate("text", x=80, y = 1, label = "18.6%", size = 24, family = "font") 
   
 
 g2 %>% 
@@ -82,10 +86,10 @@ ind <- g2 %>%
   labs(x = "<-- Economic Liberal: Economic Conservative -->", y = "<-- Social Liberal: Social Conservative -->", title = "", subtitle = "Independents" ) +
   geom_vline(xintercept = 57.5, linetype = "dashed") +
   geom_hline(yintercept = 2.38, linetype = "dashed") + 
-  annotate("text", x=20, y = 5, label = "17.4%", size = 16, family = "font") +
-  annotate("text", x=20, y = 1, label = "28.7%", size = 16, family = "font") +
-  annotate("text", x=80, y = 5, label = "30.6%", size = 16, family = "font") +
-  annotate("text", x=80, y = 1, label = "21.5%", size = 16, family = "font") 
+  annotate("text", x=20, y = 5, label = "17.4%", size = 24, family = "font") +
+  annotate("text", x=20, y = 1, label = "28.7%", size = 24, family = "font") +
+  annotate("text", x=80, y = 5, label = "30.6%", size = 24, family = "font") +
+  annotate("text", x=80, y = 1, label = "21.5%", size = 24, family = "font") 
 
 
 g2 %>% 
@@ -117,10 +121,10 @@ rep <- g2 %>%
   labs(x = "<-- Economic Liberal: Economic Conservative -->", y = "<-- Social Liberal: Social Conservative -->", title = "", caption = "Data: CCES 2016", subtitle = "Republicans" ) +
   geom_vline(xintercept = 57.5, linetype = "dashed") +
   geom_hline(yintercept = 2.38, linetype = "dashed") + 
-  annotate("text", x=20, y = 5, label = "13.0%", size = 16, family = "font") +
-  annotate("text", x=20, y = 1, label = "9.8%", size = 16, family = "font") +
-  annotate("text", x=80, y = 5, label = "54.1%", size = 16, family = "font") +
-  annotate("text", x=80, y = 1, label = "21.9%", size = 16, family = "font") 
+  annotate("text", x=20, y = 5, label = "13.0%", size = 24, family = "font") +
+  annotate("text", x=20, y = 1, label = "9.8%", size = 24, family = "font") +
+  annotate("text", x=80, y = 5, label = "54.1%", size = 24, family = "font") +
+  annotate("text", x=80, y = 1, label = "21.9%", size = 24, family = "font") 
 
 
 g2 %>% 
@@ -151,10 +155,10 @@ gay <- g2 %>%
   labs(x = "<-- Economic Liberal: Economic Conservative -->", y = "<-- Social Liberal: Social Conservative -->", title = "Economic and Social Positions in 2016", caption = "", subtitle = "LBGT Population" ) +
   geom_vline(xintercept = 57.5, linetype = "dashed") +
   geom_hline(yintercept = 2.38, linetype = "dashed") + 
-  annotate("text", x=20, y = 5, label = "9.1%", size = 16, family = "font") +
-  annotate("text", x=20, y = 1, label = "57.0%", size = 16, family = "font") +
-  annotate("text", x=80, y = 5, label = "14.7%", size = 16, family = "font") +
-  annotate("text", x=80, y = 1, label = "18.7%", size = 16, family = "font") 
+  annotate("text", x=20, y = 5, label = "9.1%", size = 24, family = "font") +
+  annotate("text", x=20, y = 1, label = "57.0%", size = 24, family = "font") +
+  annotate("text", x=80, y = 5, label = "14.7%", size = 24, family = "font") +
+  annotate("text", x=80, y = 1, label = "18.7%", size = 24, family = "font") 
 
 
 

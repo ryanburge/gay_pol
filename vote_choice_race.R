@@ -52,7 +52,7 @@ rep <- vote16_r %>%
   geom_text(aes(y = pct + .085, label = paste0(pct*100, '%')), position = position_dodge(width = .9), size = 16, family = "font") +
   scale_fill_manual(values=c("dodgerblue3", "firebrick1")) +
   theme(plot.title = element_text(size = 64, face = "bold")) +
-  labs(x = "Vote Choice", y = "Percent", title = "", subtitle = "Republicans") 
+  labs(x = "Vote Choice", y = "Percent", title = "", subtitle = "Republicans", caption = "Data: CCES 2016") 
 
 ind <- vote16_r %>% 
   filter(pid3 == "Independents")  %>% 
@@ -94,6 +94,9 @@ vote16_r <- cces16 %>%
 vote16_r$race_f = factor(vote16_r$race, levels=c('White','Black','Hispanic','Asian', 'All Others'))
 
 
+font_add_google("Playfair Display", "font")
+showtext_auto()
+
 gay <- vote16_r %>% 
   filter(vote16 == "Trump" | vote16 == "Clinton") %>% 
   ggplot(., aes(x = reorder(vote16, -pct), y = pct, fill = vote16)) +
@@ -105,7 +108,7 @@ gay <- vote16_r %>%
   theme(legend.position = "none") +
   geom_text(aes(y = pct + .085, label = paste0(pct*100, '%')), position = position_dodge(width = .9), size = 16, family = "font") +
   scale_fill_manual(values=c("dodgerblue3", "firebrick1")) +
-  labs(x = "Vote Choice", y = "Percent", title = "Vote in 2016 by Race", subtitle = "LGBT Population", caption = "Data: CCES 2016") 
+  labs(x = "Vote Choice", y = "Percent", title = "Vote in 2016 by Race", subtitle = "LGBT Population", caption = "") 
 
 
 graph <- gay + ind + dems + rep + plot_layout(ncol = 2)
